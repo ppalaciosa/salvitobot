@@ -12,13 +12,14 @@ from . import config
 from .exceptions import WordPressNotConfigured
 
 
-def post_to_wp(title, content, datetime_local):
+def post_to_wp(title, content, datetime_local, magnitude):
     """
 
     :param title: Title for post, used to guess post URL
     :param content: Body for post
     :param datetime_local: local time of earthquake, assumed to be the sames of
            WordPress instalation. Used to guess post URL
+    :param magnitude: to use for picking up the corresponding image for WordPress
     :return: post_url
     """
     msg = "\nYou need to set up your WordPress credentials: \n" \
@@ -37,11 +38,12 @@ def post_to_wp(title, content, datetime_local):
     wp = Client(config.wordpress_client, config.wordpress_username, config.wordpress_password)
 
     # set to the path to your file
-    filename = os.path.join(config.base_folder, 'img', 'salvitobot.png')
+    magnitude_filename = 'salvitobot_' + str(magnitude).replace('.', '_') + '.png'
+    filename = os.path.join(config.base_folder, 'img', magnitude_filename)
 
     # prepare metadata
     data = {
-        'name': 'salvitobot.png',
+        'name': magnitude_filename,
         'type': 'image/png',  # mimetype
     }
 

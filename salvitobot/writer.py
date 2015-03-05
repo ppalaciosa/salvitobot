@@ -94,7 +94,8 @@ class Writer(object):
             story = {
                 'title': title,
                 'body': text,
-                'local_time': item['datetime_local']
+                'local_time': item['datetime_local'],
+                'magnitude': item['magnitude'],
             }
             save_to_db(item)
             stories.append(story)

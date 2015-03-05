@@ -119,7 +119,12 @@ class Bot(object):
 
     def post_to_wp(self):
         for item in self.stories:
-            url_from_post = salvito_wordpress.post_to_wp(item['title'], item['body'], item['local_time'])
+            url_from_post = salvito_wordpress.post_to_wp(
+                item['title'],
+                item['body'],
+                item['local_time'],
+                item['magnitude'],
+            )
             self.post_urls.append(url_from_post)
             print(url_from_post)
 
