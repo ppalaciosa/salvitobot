@@ -1,9 +1,10 @@
 HISTORY
 =======
 
-0.3.x (2015-0x-xx)
+0.3.5 (2015-03-05)
 ------------------
 - ``nearby_cities`` no deben mostrar el país de manera redundante.
+- agregadas imágenes con la magnitud del sismo
 
 0.3.4 (2015-02-21)
 ~~~~~~~~~~~~~~~~~~
