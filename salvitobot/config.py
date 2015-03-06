@@ -18,6 +18,11 @@ else:
         'wordpress_client': '',
         'wordpress_username': '',
         'wordpress_password': '',
+        "DB_USER": "",
+        "DB_PASS": "",
+        "DB_NAME": "",
+        "DB_PORT": "",
+        "DB_HOST": "",
     }
 
 
@@ -33,6 +38,12 @@ key = get_secret('twitter_key')
 secret = get_secret('twitter_secret')
 token = get_secret('twitter_token')
 token_secret = get_secret('twitter_token_secret')
+
+DB_USER = get_secret('DB_USER')
+DB_PASS = get_secret('DB_PASS')
+DB_NAME = get_secret('DB_NAME')
+DB_PORT = get_secret('DB_PORT')
+DB_HOST = get_secret('DB_HOST')
 
 wordpress_client = get_secret('wordpress_client')
 wordpress_username = get_secret('wordpress_username')

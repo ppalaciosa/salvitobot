@@ -84,7 +84,7 @@ class Bot(object):
         if self.quake is None:
             # get quake function has not been called
             raise ProcedureError("You need to call the function .get_quake(country='MyCountry') first")
-        elif self.quake == []:
+        elif len(self.quake) < 1:
             print("No results were found.")
             return False
         else:
