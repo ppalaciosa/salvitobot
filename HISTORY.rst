@@ -1,13 +1,17 @@
 HISTORY
 =======
 
+0.4.0 (2015-03-07)
+~~~~~~~~~~~~~~~~~~
+- Usando postgreSQL de manera opcional.
+
 0.3.5 (2015-03-05)
 ------------------
 - ``nearby_cities`` no deben mostrar el país de manera redundante.
 - agregadas imágenes con la magnitud del sismo
 
 0.3.4 (2015-02-21)
-~~~~~~~~~~~~~~~~~~
+------------------
 - Use salvitobot image as cover in Wordpress posts.
 
 0.3.3 (2015-02-20)
