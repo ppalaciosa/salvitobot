@@ -6,6 +6,7 @@ import arrow
 import dataset
 import pytz
 import requests
+import sqlalchemy
 
 from . import config
 
@@ -65,7 +66,8 @@ def parse_quake_data(data, country):
 
 def create_database(test=None):
     """
-    Creates a sqlite3 database if not exists.
+    Creates a sqlite3 database if not exists. If user gave database credentials,
+    it can use a postgreSQL database.
 
     :test: optional, creates database for testing only
     :return: database handle using ``dataset``
@@ -76,12 +78,38 @@ def create_database(test=None):
     else:
         filename = os.path.join(config.base_folder, "salvitobot_test.db")
 
+    if config.DB_NAME != '':
+        db = dataset.connect('postgresql://' +
+                             config.DB_USER + ':' +
+                             config.DB_PASS + '@' +
+                             config.DB_HOST + ':' +
+                             config.DB_PORT + '/' +
+                             config.DB_NAME)
+        print("Using postgreSQL database.")
+        table = db[config.DB_NAME]
+        table.create_column('code', sqlalchemy.String(length=100))
+        table.create_column('depth', sqlalchemy.Integer())
+        table.create_column('magnitude_type', sqlalchemy.String())
+        table.create_column('detail', sqlalchemy.Text())
+        table.create_column('tz', sqlalchemy.Integer())
+        table.create_column('datetime_local', sqlalchemy.DateTime(timezone=False))
+        table.create_column('type', sqlalchemy.String(length=100))
+        table.create_column('longitude', sqlalchemy.Float(precision=4))
+        table.create_column('time', sqlalchemy.BigInteger())
+        table.create_column('country', sqlalchemy.String(length=200))
+        table.create_column('magnitude', sqlalchemy.Float(precision=1))
+        table.create_column('place', sqlalchemy.Text())
+        table.create_column('link', sqlalchemy.Text())
+        table.create_column('tuit', sqlalchemy.String(length=500))
+        table.create_column('latitude', sqlalchemy.Float(precision=4))
+        table.create_column('datetime_utc', sqlalchemy.DateTime())
+        return db
+
     if not os.path.isfile(filename):
         db = dataset.connect('sqlite:///' + filename)
         db.create_table("salvitobot")
     else:
         db = dataset.connect('sqlite:///' + filename)
-
     return db
 
 
