@@ -92,6 +92,7 @@ class Bot(object):
             for item in self.quake:
                 if table.find_one(code=item['code']) is None:
                     self._quakes_to_write.append(item)
+                    utils.save_to_db(item)
 
             if len(self._quakes_to_write) > 0:
                 return True
