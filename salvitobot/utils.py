@@ -122,11 +122,11 @@ def translate_string(this_string):
 
     """
     this_string = this_string.replace(' of ', ' de ')
-    this_string = this_string.replace(' W ', ' O ')
-    this_string = this_string.replace('NW', 'NO')
     this_string = this_string.replace('WNW', 'ONO')
     this_string = this_string.replace('WSW', 'OSO')
+    this_string = this_string.replace('NW', 'NO')
     this_string = this_string.replace('SW', 'SO')
+    this_string = this_string.replace(' W ', ' O ')
     return this_string
 
 
