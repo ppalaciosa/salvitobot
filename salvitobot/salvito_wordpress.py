@@ -38,7 +38,10 @@ def post_to_wp(title, content, datetime_local, magnitude):
     wp = Client(config.wordpress_client, config.wordpress_username, config.wordpress_password)
 
     # set to the path to your file
-    magnitude_filename = 'salvitobot_' + str(magnitude).replace('.', '_') + '.png'
+    if '.' in str(magnitude):
+        magnitude_filename = 'salvitobot_' + str(magnitude).replace('.', '_') + '.png'
+    else:
+        magnitude_filename = 'salvitobot_' + str(magnitude) + '_0' + '.png'
     filename = os.path.join(config.base_folder, 'img', magnitude_filename)
 
     # prepare metadata
