@@ -12,7 +12,7 @@ class Writer(object):
 
     """
     def __init__(self):
-        self.template = "Un _tremor_ de magnitud _magnitude_integer_ _magnitude_type_" \
+        self.template = "Un _tremor_ de magnitud _magnitude_integer_ _magnitude_type_ " \
                         "(_magnitude_level_) se produjo el _date_local_str_ por la _time_of_day_ a " \
                         "_epicenter_, reportó el Servicio Geológico de EE.UU. \n\n" \
                         "El _tremor_ se registró a las _time_ de la _time_of_day_, " \
@@ -87,8 +87,8 @@ class Writer(object):
             text = re.sub('_time_', time, text)
             text = re.sub('_depth_', depth, text)
 
-            title = tremor.capitalize() + ' de ' + magnitude_integer
-            title += ' grados ' + str(item['magnitude_type']).capitalize()
+            title = tremor.capitalize() + ' de magnitud' + magnitude_integer
+            title += ' ' +str(item['magnitude_type']).capitalize()
             title += ' se registró a ' + epicenter
 
             story = {
