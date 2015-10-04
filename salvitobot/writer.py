@@ -12,8 +12,8 @@ class Writer(object):
 
     """
     def __init__(self):
-        self.template = "Un _tremor_ de _magnitude_level_ magnitud de _magnitude_integer_ " \
-                        "grados _magnitude_type_ se produjo el _date_local_str_ por la _time_of_day_ a " \
+        self.template = "Un _tremor_ de magnitud _magnitude_integer_ _magnitude_type_" \
+                        "(_magnitude_level_) se produjo el _date_local_str_ por la _time_of_day_ a " \
                         "_epicenter_, reportó el Servicio Geológico de EE.UU. \n\n" \
                         "El _tremor_ se registró a las _time_ de la _time_of_day_, " \
                         "hora local, a una profundidad de " \
@@ -43,11 +43,11 @@ class Writer(object):
                 tremor = 'temblor'
 
             if item['magnitude'] >= 7:
-                magnitude_level = 'gran'
+                magnitude_level = 'fuerte'
             elif 4 < item['magnitude'] < 7:
-                magnitude_level = 'mediana'
+                magnitude_level = 'moderado'
             else:
-                magnitude_level = 'escasa'
+                magnitude_level = 'leve'
 
             magnitude_integer = str(item['magnitude'])
             date_local = item['datetime_local']
